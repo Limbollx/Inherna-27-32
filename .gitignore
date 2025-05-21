@@ -1,0 +1,13 @@
+venv/
+.venv/
+env/
+.env/
+.Python
+pyvenv.cfg
+pip-log.txt
+pip-delete-this-directory.txt
+.env
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
