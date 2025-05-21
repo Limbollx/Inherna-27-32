@@ -11,3 +11,6 @@ pip-delete-this-directory.txt
 __pycache__/
 *.py[cod]
 *$py.class
+LaTeX/*
+!LaTeX/main.tex
+!LaTeX/main.pdf
