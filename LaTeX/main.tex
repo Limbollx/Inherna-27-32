@@ -5,14 +5,77 @@
 \usepackage[T1]{fontenc}
 \usepackage{array}
 
-\newcommand{\titre}{Intitulé de matière}
-\newcommand{\auteur}{Nom Prénom}
+\newcommand{\titre}{Outils numériques}
 \newcommand{\niveau}{CPI 1 - S2}
 
 \begin{document}
 
-\bgimg{Theme_LaTeX/Icones/Fond_de_page_ESIROI_vierge.png}
+% PAGE DE GARDE
+\begin{titlepage}
 
+    \begin{minipage}{0.49\textwidth}
+        \includegraphics[width=0.6\textwidth]{./Theme_LaTeX/Icones/LOGO_UR}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.49\textwidth}
+        \begin{flushright}
+        \includegraphics[width=0.6\textwidth]{./Theme_LaTeX/Icones/LOGO}
+        \end{flushright}
+    \end{minipage}
+    
+    \vspace{3cm}
+    
+    \begin{center}
+        \textsc{\LARGE ESIROI -- Université de La Réunion}\\[0.5cm]
+        \textsc{\Large Cycle préparatoire intégré}\\[0.5cm]
+        \textsc{\large\mydate \today}
+            \par \normalsize \normalfont
+    
+        \rule{\linewidth}{0.5mm} \\[0.4cm]
+        {\huge \bfseries Inherna}\\[0.4cm]
+        \rule{\linewidth}{0.5mm} \\[1.5cm]
+    
+        {\Large \bfseries Projet d'Outils numériques}\\[1cm]
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{flushleft}
+        \textbf{Réalisé par :}\\
+        Kenael ACELDY\\
+        Samuel BLARD\\
+        Matheo GUILLOT--EID\\
+        Miahy RAHARIJAONA\\
+        Basri YOUSSOUFFOU\\[0.5cm]
+    
+        \textbf{Encadré par :}\\
+        Andreas Hottin\\[0.5cm]
+    
+        
+    
+        \textbf{Année universitaire :} 2024–2025\\[1cm]
+    \end{flushleft}
+    
+    \vfill
+    
+    \begin{center}
+        \textit{Projet réalisé dans le cadre du cycle préparatoire intégré à l'ESIROI}\\
+        \textit{Université de La Réunion}
+    \end{center}
+    
+    \bgimg{./Theme_LaTeX/Icones/Fond_de_page_ESIROI_vierge}
+    
+\end{titlepage}
+
+\section{Introduction}
+Le travail qui nous est donné consiste à créer un sujet de devoir avec une partie sur le cours et une partie sur la résolution d'une équation différentielle du second ordre à partir d'un phénomène physique.
+« Inherna » veut dire « les marées » dans la langue Mizo. Nous avons choisi de porter notre étude sur les marées car c'est un phénomène qui nous entoure tous et qui nous influence tous.
+Cependant, appliquer notre étude à la réalité est un défi car les marées sont très complexes et dépendent de nombreux facteurs.
+
+\subsection{Objectif}
+Notre objectif est résoudre une équation différentielle du second ordre, et de présenter une partie de cours.
+
+\section{Définition}
 Les marées correspondent aux variations périodiques du niveau des mers et des océans, sous l'influence des forces gravitationnelles exercées par la Lune et le Soleil sur la Terre. Si leur manifestation en bord de côte est bien connue du grand public, le phénomène qui les gouverne est en réalité le fruit d'interactions complexes entre les corps célestes, la rotation terrestre, et la géométrie des bassins océaniques.
 
 Comprendre et prédire l'évolution des marées suppose de s'appuyer sur des modèles physiques et mathématiques capables de traduire ces interactions en grandeurs mesurables. Dans ce travail, nous cherchons à représenter de manière simplifiée cette dynamique, en étudiant comment le niveau de l'eau varie au cours du temps dans un cadre réduit mais cohérent avec les phénomènes réels.
