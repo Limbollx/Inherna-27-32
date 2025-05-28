@@ -2,7 +2,7 @@
  # @ Auteur: Mathéo Guillot--Eid
  # @ Crée le: 2025-05-21 11:35:50
  # @ Modifié par: Basri
- # @ Modifié le: 28/05/2025 14:18:58
+ # @ Modifié le: 28/05/2025 14:29:38
  # @ Description: Script de simulation
  '''
 
@@ -25,9 +25,9 @@ omega_lunaire = 2 * np.pi / T_lunaire
 omega_solaire = 2 * np.pi / T_solaire
 
 F_lunaire = 1e-6
-F_solaire = 0.46 * F_lunaire
+F_solaire = 0.5 * F_lunaire
 
-omega0 = omega_lunaire 
+omega0 = omega_lunaire
 
 # --- Paramètres numériques ---
 dt = 10
@@ -38,7 +38,7 @@ N = int(Tmax / dt)
 t = np.linspace(0, Tmax, N)
 h = np.zeros(N)
 v = np.zeros(N)
-gamma = -2e-5 # coefficient de frottement
+gamma = -3e-3 # coefficient de frottement
 
 # --- Conditions initiales ---
 h[0] = 0.0
@@ -59,6 +59,7 @@ plt.ylabel("Hauteur h(t) (m)")
 plt.title("Modèle de marée d'un bassin (lunaire + solaire)")
 plt.grid(True)
 plt.tight_layout()
+plt.savefig("../img/marée_lunaire_solaire.png",dpi = 300)
 plt.show()
 
 
