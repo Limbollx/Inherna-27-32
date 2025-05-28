@@ -2,7 +2,7 @@
  # @ Auteur: Mathéo Guillot--Eid
  # @ Crée le: 2025-05-21 11:35:50
  # @ Modifié par: Basri
- # @ Modifié le: 28/05/2025 12:09:24
+ # @ Modifié le: 28/05/2025 12:25:46
  # @ Description: Script de simulation
  '''
 
@@ -65,7 +65,7 @@ omega_solaire = 2 * np.pi / T_solaire
 F_lunaire = 1e-6
 F_solaire = 0.46 * F_lunaire
 
-omega0 = omega_lunaire * omega_solaire
+omega0 = omega_lunaire 
 
 # --- Paramètres numériques ---
 dt = 10

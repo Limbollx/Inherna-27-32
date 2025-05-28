@@ -90,61 +90,84 @@ Les marées correspondent aux variations périodiques du niveau des mers et des 
 Comprendre et prédire l'évolution des marées suppose de s'appuyer sur des modèles physiques et mathématiques capables de traduire ces interactions en grandeurs mesurables. Dans ce travail, nous cherchons à représenter de manière simplifiée cette dynamique, en étudiant comment le niveau de l'eau varie au cours du temps dans un cadre réduit mais cohérent avec les phénomènes réels.
 
 \section{Modélisation}
-\subsection*{1. Hypothèses physiques}
 
-On considère une colonne d'eau soumise à :
-\begin{itemize}
-    \item une \textbf{force de rappel gravitationnelle} liée à la forme du bassin ;
-    \item une \textbf{force extérieure périodique}, modélisant l'effet de la Lune ou du Soleil.
-\end{itemize}
+\subsection*{1. Relation fondamentale de la dynamique}
 
-On note :
-\begin{itemize}
-    \item $h(t)$ : hauteur d'eau par rapport au niveau moyen ;
-    \item $m$ : masse de la colonne d'eau (constante) ;
-    \item $F(t) = F \cos(\omega t)$ : force d'excitation périodique ;
-    \item $k$ : coefficient de rappel (analogue à un ressort).
-\end{itemize}
-
-\subsection*{2. Relation fondamentale de la dynamique}
-
-D'après la deuxième loi de Newton appliquée au volume d'eau :
+Selon la deuxième loi de Newton, la somme des forces appliquées à un système est égale à la masse multipliée par l'accélération :
 
 \[
 \sum \vec{F} = m \vec{a}
 \]
 
-Dans la direction verticale :
+Dans notre cas, on considère une colonne d’eau soumise à :
 
-\[
-m \ddot{h}(t) = -k h(t) + F \cos(\omega t)
-\]
-
-Le terme $-k h(t)$ représente une force de rappel, proportionnelle au déplacement vertical $h(t)$, comme pour un oscillateur harmonique.
-
-\subsection*{3. Mise sous forme canonique}
-
-On divise chaque terme par $m$ :
-
-\[
-\ddot{h}(t) + \frac{k}{m} h(t) = \frac{F}{m} \cos(\omega t)
-\]
-
-En posant $\omega_0^2 = \dfrac{k}{m}$ et $A = \dfrac{F}{m}$, on obtient :
-
-\[
-\boxed{ \ddot{h}(t) + \omega_0^2 h(t) = A \cos(\omega t) }
-\]
-
-\subsection*{4. Interprétation}
-
-Cette équation est celle d'un \textbf{oscillateur harmonique forcé}, où :
 \begin{itemize}
-    \item $\omega_0$ est la \textbf{pulsation propre} du système, dépendant de la profondeur et de la géométrie du bassin ;
-    \item $\omega$ est la \textbf{pulsation du forçage}, liée aux cycles des marées (typiquement 12h25 pour la Lune) ;
-    \item $A$ est l'amplitude de l'excitation extérieure.
+    \item une force de \textbf{restauration gravitationnelle} proportionnelle à la hauteur \( h(t) \),
+    \item une force de \textbf{frottement linéaire} proportionnelle à la vitesse \( \dot{h}(t) \),
+    \item une \textbf{force extérieure périodique} due aux marées lunaires et solaires.
 \end{itemize}
 
-L'étude de cette équation permet de comprendre les phénomènes de \textbf{résonance}, lorsque $\omega \approx \omega_0$, menant à une amplification des marées dans certains bassins (ex. baie de Fundy).
+\subsection*{2. Équilibre des forces (projection verticale)}
+
+La relation fondamentale s’écrit :
+
+\[
+m \ddot{h}(t) = -b \dot{h}(t) - k h(t) + F_{\text{marée}}(t)
+\]
+
+où :
+\begin{itemize}
+    \item \( m \) : masse de la colonne d’eau,
+    \item \( b \) : coefficient de frottement (kg/s),
+    \item \( k \) : constante de raideur liée à la gravité et à la géométrie du bassin (N/m),
+    \item \( F_{\text{marée}}(t) \) : force extérieure par unité de masse due aux marées.
+\end{itemize}
+
+\subsection*{3. Forçage dû aux marées}
+
+On modélise la force extérieure comme la somme de deux composantes harmoniques :
+
+\[
+F_{\text{marée}}(t) = m F_L \cos(\omega_L t) + m F_S \cos(\omega_S t)
+\]
+
+où :
+\begin{itemize}
+    \item \( F_L \), \( F_S \) : accélérations spécifiques (m/s\(^2\)) dues respectivement à la Lune et au Soleil,
+    \item \( \omega_L \), \( \omega_S \) : pulsations angulaires associées (rad/s).
+\end{itemize}
+
+\subsection*{4. Équation normalisée}
+
+On divise l'équation par la masse \( m \) :
+
+\[
+\ddot{h}(t) + \frac{b}{m} \dot{h}(t) + \frac{k}{m} h(t) = F_L \cos(\omega_L t) + F_S \cos(\omega_S t)
+\]
+
+\subsection*{5. Notations standards}
+
+On introduit les notations usuelles :
+\[
+2\gamma = \frac{b}{m} \qquad \text{et} \qquad \omega_0^2 = \frac{k}{m}
+\]
+
+On obtient alors l’équation différentielle suivante :
+
+\[
+\boxed{
+\ddot{h}(t) + 2\gamma \dot{h}(t) + \omega_0^2 h(t) = F_L \cos(\omega_L t) + F_S \cos(\omega_S t)
+}
+\]
+
+\subsection*{6. Interprétation physique}
+
+\begin{itemize}
+    \item \( \omega_0 \) : pulsation propre du bassin (dépend de la géométrie et de la gravité),
+    \item \( \gamma \) : coefficient d’amortissement (modélise les pertes par frottement),
+    \item Le second membre représente un forçage bi-périodique (marées).
+\end{itemize}
+
+Cette équation modélise donc un \textbf{oscillateur harmonique amorti linéaire} soumis à un forçage extérieur double (Lune + Soleil), que l’on résout numériquement par la méthode d’Euler dans le code Python correspondant.
 
 \end{document}
