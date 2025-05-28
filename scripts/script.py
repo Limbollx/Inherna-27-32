@@ -2,7 +2,7 @@
  # @ Auteur: Mathéo Guillot--Eid
  # @ Crée le: 2025-05-21 11:35:50
  # @ Modifié par: Basri
- # @ Modifié le: 28/05/2025 12:25:46
+ # @ Modifié le: 28/05/2025 14:18:58
  # @ Description: Script de simulation
  '''
 
@@ -38,16 +38,16 @@ N = int(Tmax / dt)
 t = np.linspace(0, Tmax, N)
 h = np.zeros(N)
 v = np.zeros(N)
+gamma = -2e-5 # coefficient de frottement
 
-# Conditions initiales
+# --- Conditions initiales ---
 h[0] = 0.0
 v[0] = 0.0
 
-gamma = 1e-5
-
+# --- Euler explicite ---
 for i in range(N - 1):
     force = F_lunaire * np.cos(omega_lunaire * t[i]) + F_solaire * np.cos(omega_solaire * t[i])
-    a = -2 * gamma * v[i] - omega0**2 * h[i] + force
+    a = gamma * v[i] - omega0**2 * h[i] + force
     v[i+1] = v[i] + a * dt
     h[i+1] = h[i] + v[i] * dt
 
