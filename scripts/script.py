@@ -2,7 +2,7 @@
  # @ Auteur: Mathéo Guillot--Eid
  # @ Crée le: 2025-05-21 11:35:50
  # @ Modifié par: Basri
- # @ Modifié le: 28/05/2025 14:45:03
+ # @ Modifié le: 28/05/2025 15:01:14
  # @ Description: Script de simulation
  '''
 
@@ -21,34 +21,40 @@ import matplotlib.pyplot as plt
 T_lunaire = 44714  # période de marée lunaire M2 en secondes (~12h25)
 T_solaire = 43200  # période de marée solaire S2 en secondes (~12h)
 
-omega_lunaire = 2 * np.pi / T_lunaire
-omega_solaire = 2 * np.pi / T_solaire
+# --- Calcul des fréquences angulaires ---
+omega_lunaire = 2 * np.pi / T_lunaire  # fréquence angulaire lunaire
+omega_solaire = 2 * np.pi / T_solaire  # fréquence angulaire solaire
 
-F_lunaire = 1e-6
-F_solaire = 0.5 * F_lunaire
+# --- Amplitudes des forces ---
+F_lunaire = 1e-6  # amplitude de la force lunaire
+F_solaire = 0.5 * F_lunaire  # amplitude de la force solaire (50% de la force lunaire)
 
-omega0 = omega_lunaire
+omega0 = omega_lunaire  # fréquence naturelle du système
 
 # --- Paramètres numériques ---
-dt = 10
-Tmax = 29 * 86400
-N = int(Tmax / dt)
+dt = 10  # pas de temps en secondes
+Tmax = 29 * 86400  # durée totale de simulation (29 jours en secondes)
+N = int(Tmax / dt)  # nombre de points de calcul
 
 # --- Initialisation ---
-t = np.linspace(0, Tmax, N)
-h = np.zeros(N)
-v = np.zeros(N)
-gamma = -3e-3 # coefficient de frottement
+t = np.linspace(0, Tmax, N)  # vecteur temps
+h = np.zeros(N)  # vecteur hauteur d'eau
+v = np.zeros(N)  # vecteur vitesse
+gamma = -3e-3  # coefficient de frottement (amortissement)
 
 # --- Conditions initiales ---
-h[0] = 0.0
-v[0] = 0.0
+h[0] = 0.0  # hauteur initiale
+v[0] = 0.0  # vitesse initiale
 
 # --- Schéma d'Euler explicite ---
 for i in range(N - 1):
+    # Calcul de la force totale (lunaire + solaire)
     force = F_lunaire * np.cos(omega_lunaire * t[i]) + F_solaire * np.cos(omega_solaire * t[i])
+    # Calcul de l'accélération
     a = gamma * v[i] - omega0**2 * h[i] + force
+    # Mise à jour de la vitesse
     v[i+1] = v[i] + a * dt
+    # Mise à jour de la position
     h[i+1] = h[i] + v[i] * dt
 
 # --- Tracé ---
