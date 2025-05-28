@@ -2,7 +2,7 @@
  # @ Auteur: Mathéo Guillot--Eid
  # @ Crée le: 2025-05-21 11:35:50
  # @ Modifié par: Basri
- # @ Modifié le: 28/05/2025 14:33:56
+ # @ Modifié le: 28/05/2025 14:45:03
  # @ Description: Script de simulation
  '''
 
@@ -44,7 +44,7 @@ gamma = -3e-3 # coefficient de frottement
 h[0] = 0.0
 v[0] = 0.0
 
-# --- Euler explicite ---
+# --- Schéma d'Euler explicite ---
 for i in range(N - 1):
     force = F_lunaire * np.cos(omega_lunaire * t[i]) + F_solaire * np.cos(omega_solaire * t[i])
     a = gamma * v[i] - omega0**2 * h[i] + force
